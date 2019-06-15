@@ -1,0 +1,46 @@
+{% extends "./_base.html" %}
+{% block content %}
+    <div class="container">
+        <h2 class="text-center">タイムライン</h2>
+        <div class="row">
+            <div class="col-12">
+                <a class="btn btn-outline-dark float-right" href="{% url 'index' %}">戻る</a>
+            </div>
+        </div>
+        <!--  -->
+        <div class="cp_timeline03">
+            {% for item in item_list %}
+            <div class="timeline_group">
+                {% ifchanged %}
+                <span class="time_year">{{ item.sample_7|date:"Y" }}</span>
+                {% endifchanged %}
+                <div class="timeline_item">
+                    <div class="time">
+                        <span class="time_month">{{ item.sample_7|date:"M" }}</span>
+                        <span class="time_day">{{ item.sample_7|date:"d" }}</span>
+                    </div>
+                    <div class="desc">
+                        <p class="flag">{{  item.sample_1|default_if_none:"未入力"  }}</p>
+                        {{  item.sample_2|default_if_none:"未入力"|linebreaksbr  }}
+                        <div class="float-right">
+                            <a class="btn btn-outline-dark " href="{% url 'detail' item.pk %}">詳細</a>
+                            <a class="btn btn-outline-dark " href="{% url 'update' item.pk %}">編集</a>
+                            <a class="btn btn-outline-dark " href="{% url 'delete' item.pk %}">削除</a>
+                        </div>        
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+                <li class="timeline_group">
+                    対象のデータがありません
+                </li>
+            {% endfor %}
+        </div>
+        <!--  -->
+        <div class="row">
+            <div class="col-12">
+                <a class="btn btn-outline-dark float-right" href="{% url 'index' %}">戻る</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

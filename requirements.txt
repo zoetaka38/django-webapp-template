@@ -1,0 +1,6 @@
+Django==2.1.7
+django-crispy-forms==1.7.2
+django-filter==2.1.0
+pytz==2018.9
+django-storages==1.7.1
+boto3==1.9.120

@@ -1,0 +1,13 @@
+.idea
+.vscode
+__pycache__
+.python-version
+*.log
+*.pot
+*.pyc
+*.py[co]
+local_settings.py
+db.sqlite3
+env
+media
+
